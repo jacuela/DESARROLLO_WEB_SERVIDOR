@@ -20,11 +20,11 @@
 
 <body>
   <header>
-    <h1>Hola mundo grafico con color de fondo</h1>
+    <h1>Hola mundo grafico</h1>
   </header>
   <?php
 
-  print "<p>Hola Mundo</p>\n";
+  print "<p>Hola Mundo con color de fondo</p>\n";
 
   ?>
 
