@@ -1,0 +1,17 @@
+{# templates/login.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Aplicación de pedidos</title>
+    </head>
+    <body>		
+    	<form action="{{ path('login') }}" method="post">
+			Usuario
+			<input type="text" id="username" name="_username" />
+			Clave
+			<input type="password" id="password" name="_password" />
+			<button type="submit">login</button>
+		</form>
+    </body>
+</html>

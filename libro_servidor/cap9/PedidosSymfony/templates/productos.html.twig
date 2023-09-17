@@ -1,0 +1,23 @@
+{# templates/productos.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}Tabla de productos{% endblock %}
+{% block contenido %}
+    <table>
+        <tr><th>Nombre</th><th>Descripción</th><th>Stock</th><th>Peso</th><th>Comprar</th></tr>
+        {% for prod in productos %}
+            <tr>
+				<td>{{ prod.nombre }}</td>
+				<td>{{ prod.descripcion }}</td>
+				<td>{{ prod.stock }}</td><td>{{ prod.peso }}</td>
+				<td>
+					<form action = {{path('anadir')}} method = 'POST'>
+						<input name = 'unidades' type='number' min = '1' value = '1'>
+						<input type = 'submit' value='Comprar'><input name = 'cod' type='hidden' value = {{prod.codProd}}>
+					</form>
+				</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+ 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Saludo</title>        
+    </head>
+    <body>
+        <table> 
+			<tr><th>Código</th><th>Nombre</th></tr>
+			{%for fila in filas %}
+				<tr><td>{{ fila.codigo }}</td><td>{{ fila.nombre }}</td></tr>
+			{% endfor %}
+		</table>
+    </body>
+</html>

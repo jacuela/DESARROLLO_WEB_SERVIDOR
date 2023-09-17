@@ -1,0 +1,9 @@
+{# templates/correo.html.twig #}
+    Pedido {{ id }} realizado con éxito
+     <table>
+        <tr><th>Nombre</th><th>Descripción</th><th>Peso</th><th>Unidades</th></tr>
+           {% for  prod in productos %}
+            <tr><td>{{ prod.nombre }}</td><td>{{ prod.descripcion }}</td><td>{{ prod.peso }}</td><td>{{  prod.unidades  }}</td> </tr>
+           {% endfor %}
+       </table>
+
