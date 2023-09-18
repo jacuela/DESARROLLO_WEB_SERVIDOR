@@ -10,7 +10,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilos.css" title="Color">
-  <title>Holamundografico</title>
+  <title>01_Holamundografico</title>
 </head>
 
 <body>
