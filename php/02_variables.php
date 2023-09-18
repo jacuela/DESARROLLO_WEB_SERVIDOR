@@ -18,17 +18,19 @@ print "<hr>";
 
 //CONSTANTES
 define("LIMITE", 1000);
+print LIMITE.'<br>';
+print "la const LIMITE vale ".LIMITE."<br>";
 $suma = 1 + LIMITE;
 print $suma;
 
-/*
-print "<pre>";
-print_r(get_defined_constants());
-print "</pre>\n";
-*/
+
+// print "<pre>";
+// print_r(get_defined_constants());
+// print "</pre>\n";
 
 
 //######### TIPO NUMERICOS #################
+
 print "<hr>";
 $a = 0b100; // 4 en binario
 print $a . "<br>";
@@ -36,7 +38,7 @@ print $a . "<br>";
 $a = 0100;  // 64 en octal
 print $a . "<br>";
 
-$a = 0x100; // 256 en hexadecimal
+$a = 0xF; // 15 en hexadecimal
 print $a . "<br>";
 
 
@@ -64,12 +66,12 @@ echo "Me llamo $name".'<br>'; // output: Me llamo Juan
 echo 'Me llamo $name'.'<br>'; // output: Me lamo $name
 
 $prefijo="super";
-print "estoy {$prefijo}contento".'<br>'; //interpola
 print "estoy $prefijocontento".'<br>'; //mezcla variable con texto
+print "estoy {$prefijo}contento".'<br>'; //interpola
 print 'estoy {$prefijo}contento'.'<br>'; //con comillas simples no vale
+print "Estoy $prefijo"."contento".'<br>';
 
 
-/*
 //######## ASIGNACION POR REFERENCIA
 print "<hr>";
 $var1 = 100; 
@@ -79,6 +81,5 @@ echo "$var2<br>";// muestra 100
 $var2 = 300;     // cambia el valor de $var2
 echo "$var1<br>";// $var1 también cambia
 $var3 = 400;     // este cambio no afecta a $var1
-echo $var1;
+echo $var3;
 
-*/

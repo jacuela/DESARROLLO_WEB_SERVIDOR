@@ -1,6 +1,5 @@
 <?php
 
-
 $var = 3;
 if ($var == 1) {
     echo "Es un uno";
@@ -9,7 +8,7 @@ if ($var == 1) {
 } elseif ($var == 3) {
     echo "Es un tres";
 } else {
-    echo "No es un uno, ni un dos, ni un tres";
+    echo "No es un uno, ni un dos, ni un tresss";
 }
 
 
@@ -22,6 +21,7 @@ if ($a == $b) {
 } else {
     echo "No son iguales <br>";
 }
+
 if ($a === $b) {
     echo "Son idénticos (mismo tipo y valor) <br>";
 } else {
@@ -32,11 +32,14 @@ print '<hr>';
 for ($i = 0; $i < 5; $i = $i + 1) {
     echo "$i <br>";
 }
+print '<br>';
 
 $matriz = [0, 1, 10, 100, 1000];
 foreach ($matriz as $valor) {
     print $valor . "<br>\n";
 }
+
+print '<br>';
 
 //Mira como interpolamos en la cadena el valor de la varible
 foreach ($matriz as $indice => $valor) {

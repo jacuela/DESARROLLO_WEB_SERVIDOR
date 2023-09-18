@@ -19,26 +19,35 @@ $matriz[]="primer elemento"; //si no indico indice, añado al final.
 
 
 $matriz[]="segundo elemento"; 
-print_r($matriz);
+var_dump($matriz);
 
 
 //####### Matrices asociativas
 print '<hr>';
-$edades = ["Andrés" => 21, "Bárbara" => 19, "Camilo" => 17];
+$edades = ["Andrés" => 21, "Bárbara" => 19, "Camilo" => 21];
 
 print "<p>Bárbara tiene $edades[Bárbara] años</p>\n";
 print "<p>Camilo tiene {$edades["Camilo"]} años</p>\n";
 print "<p>Bárbara tiene " . $edades["Bárbara"] . " años</p>\n";
+
+
 
 //Recorrido
 foreach ($edades as $clave=>$valor){
     print "$clave tiene $valor años."."<br>";
 }
 
+//Tamaño del array
+print '<br>';
+print "El array es de tamaño ".sizeof($edades);
+print '<br>';
+
 print "Lista de edades:"."<br>";
 foreach ($edades as $valor){
     print "$valor años"."<br>";
 }
+
+
 
 //########Otras cosas
 print '<hr>';
@@ -54,6 +63,12 @@ print "<pre>\n"; print_r($matriz); print "</pre>\n";
 
 unset($matriz); //borro toda la matriz. No sale nada.
 print "<pre>\n"; print_r($matriz); print "</pre>\n"; 
+
+$javi="Javi";
+print "$javi"."<br>";
+unset($javi);
+print "$javi"."<br>";
+
 
 
 

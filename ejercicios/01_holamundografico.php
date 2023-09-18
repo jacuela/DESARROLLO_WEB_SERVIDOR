@@ -1,11 +1,6 @@
 <?php
-
-/**
- * Holamundografico.php
- *
- * @author Cuello
- *
- */
+//  Holamundografico.php
+//  @author Cuello
 ?>
 
 <!DOCTYPE html>
@@ -22,12 +17,11 @@
   <header>
     <h1>Hola mundo grafico</h1>
   </header>
-  <?php
-
-  print "<p>Hola Mundo con color de fondo</p>\n";
-
-  ?>
-
+  <main>
+    <?php
+    print "<p>Hola Mundo con color de fondo</p>\n";
+    ?>
+  </main>
   <footer>
     <hr>
     <p>Autor: Juan Antonio Cuello</p>
