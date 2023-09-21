@@ -6,11 +6,7 @@
 ?>
 
 <?php
-function saludar($nombre = "usuario")
-{
-    print "Hola $nombre"; 
-    
-}
+require_once('funciones/utilidades.php');
 ?>
 
 

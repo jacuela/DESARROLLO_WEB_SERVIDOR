@@ -6,7 +6,7 @@ $nombre1 = "Pedro";
 $nombre2;
 $apellidos = "Sanchez";
 
-//Funcuon isset()
+//Funcion isset()
 //Ayuda:Mostrar texto en negrita <strong></strong>
 print "<p>Tu nombre es <strong>";
 if (isset($nombre1)) {
@@ -44,8 +44,8 @@ if (is_int($a)) {
 print "<br>";
 
 $edad = "48";
-if (is_numeric($dato)) {
-    print "La edad es $dato"; //mira como escapp el $
+if (is_numeric($edad)) {
+    print "La edad es $edad"; //mira como escapp el $
 } else {
     print "Valor de edad INCORRECTO";
 }
@@ -60,7 +60,8 @@ function suma($a,$b){
     return $a+$b;
 }
 
-print suma(4,10)."<br>";
+print suma(4,11)."<br>";
+
 
 //------------------------------
 function saludar($nombre="usuario",$negrita=0){
