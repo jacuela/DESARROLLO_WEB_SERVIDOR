@@ -9,7 +9,6 @@
 require_once('funciones/utilidades.php');
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 
