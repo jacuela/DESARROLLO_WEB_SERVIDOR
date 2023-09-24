@@ -1,0 +1,101 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+*/
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap');
+
+
+
+html {
+    font-size: 15px;
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.5;
+    font-weight: 200;
+    color: rgb(23,23,23);
+}
+
+body {
+    margin:0px;
+}
+
+header{
+    background-color: rgb(0,0,0);
+    color:white;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+
+
+/*  ========================= */
+/*  ==== Seccion footer ===== */
+
+footer{
+    color:white;
+    padding-left: 150px;
+    padding-right: 150px;
+    background-color: rgb(0,0,0);
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top:10px;
+}
+
+
+
+/*  ========================= */
+/*  ==== Seccion main ===== */
+
+main{
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 50px;
+}
+
+
+/*  ========================= */
+/*  ==== formulario ===== */
+
+form.haztesocio{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+fieldset legend{
+    font-weight: bolder;
+}
+
+form.haztesocio fieldset{
+    margin-bottom: 20px;
+}
+
+form.haztesocio ul{
+    padding-left: 0px;
+}
+
+form.haztesocio li{
+    list-style: none;
+}
+
+.datos_personales input,
+.datos_login input,
+form.haztesocio textarea,
+form.haztesocio select{
+    width: 100%;
+}
+
+
+
+form.haztesocio button{
+    background-color: red;
+    padding: 10px 30px;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.3rem;
+    border: 0px;
+}
