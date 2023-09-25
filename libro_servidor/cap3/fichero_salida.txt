@@ -1,1 +1,0 @@
-Fichero creado con file_put_contents

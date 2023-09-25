@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/formulario_socios.css">
+    <title>Formulario socios</title>
+</head>
+<body>
+    <header>
+        <H1>RITMO: TU CLUB DE RUNNING</H1>
+    </header>
+    
+    <main>
+        <h2>Hazme socio del club de running Ritmo</h2>
+        
+        <form class="haztesocio" action=# method="get">
+            <p>Los campos marcados con <span aria-label="required">*</span> son obligatorios</p>
+            
+            <fieldset class="datos_personales">
+                <legend>Datos personales y de contacto</legend>
+                <div>
+                    <label for="nombre">Nombre <span aria-label="required">*</span></label>
+                    <input type="text" id="nombre" name="nombre" pattern="[A-Za-z ']{2,64}" required>
+                </div>
+                 
+                <div>
+                    <label for="apellidos">Apellidos <span aria-label="required">*</span></label>
+                    <input type="text" id="apellidos" name="apellidos" pattern="[A-Za-z ']{2,128}" required>
+                </div>
+                
+                <div>
+                    <label for="correo">Correo electrónico <span aria-label="required">*</span></label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                
+                <div>
+                    <label for="telefono">Telefono <span aria-label="required">*</span></label>
+                    <input type="text" id="telefono" name="telefono" required>
+                </div>
+                
+                <div>
+                    <label for="fecha_nac">Fecha de nacimiento <span aria-label="required">*</span></label>
+                    <input type="date" id="fecha_nac" name="fecha_nac">
+                </div>
+            </fieldset>   
+               
+            <fieldset class="datos_login">
+                <legend>Datos de login</legend>
+                <label for="titular">Usuario <span aria-label="required">*</span></label>
+                <input type="text" id="titular" name="titular" required>
+                
+                <label for="ccc">Contraseña <span aria-label="required">*</span></label>
+                <input type="text" id="ccc" name="ccc" required>
+                <label for="ccc">Repetir Contraseña <span aria-label="required">*</span></label>
+                <input type="text" id="ccc" name="ccc" required>
+            </fieldset>
+
+            <fieldset class="tipo_cuota">
+                <legend>Tipo de cuota *</legend>
+                 <ul>
+                  <li>     
+                   <input type="radio" id="mensual" name="cuota" value="30" checked>
+                   <label for="mensual">Mensual (30 €)</label>
+                  </li>
+                  <li>  
+                   <input type="radio" id="trimestral" name="cuota" value="45">
+                   <label for="trimestral">Trimestral (45 €)</label>
+                  </li>
+                  <li> 
+                   <input type="radio" id="anual" name="cuota" value="100">
+                   <label for="anual">Anual (100 €)</label>
+                  </li>  
+                  </ul>
+             </fieldset>
+                
+
+            
+            <fieldset class="otra_info">
+                <legend>Otras informaciones</legend>
+                <label for="motivos">¿Por qué estas interesado en hacerte socio?</label>
+                <textarea id="motivos" name="motivos" rows="7"></textarea>
+                
+                <div class="columna_50">
+                    <label for="medio">¿Por qué medio nos has conocido?</label>
+                    <select id="medio" name="mediosconocido">
+                      <option value="" hidden>Selecciona una opción</option>
+                      <option value="Prensa" >Prensa</option>
+                      <option value="Facebook">Facebook</option>
+                      <option value="Instagram">Instagram</option>
+                      <option value="Otro socio">Otro socio</option>
+                    </select>
+                </div>
+
+                <br>
+                <div>Indica otros intereses:</div>
+                <input type="checkbox" name="aficion_natacion">Natación
+                <input type="checkbox" name="aficion_senderismo">Senderismo
+                <input type="checkbox" name="aficion_ciclismo">Ciclismo
+                
+            </fieldset>
+            
+            <p>
+            INFORMACIÓN SOBRE PROTECCIÓN DE DATOS DE <strong>RITMO. Finalidades:</strong> recogida de datos para la inscripción como socio del interesado. <strong>Legitimación:</strong> Consentimiento del intersado. <strong>Destinatarios:</strong> No están previstas cesiones de datos a terceros, excepto obligación legal. <strong>Derechos:</strong> Puede retirar su consentimieno en cualquier momento, así como acceder, rectificar, suprimir sus datos y otros derechos dirigiéndose a <a>info@ritmo.org</a>. <strong>Información Adicional:</strong> Puede ampliar la información en el enlace de <a>Aviso Legal</a> i <a>Política de privacidad</a>.
+            </p>
+            
+            <p>
+            <input type="checkbox" id="politica" name="politica">
+            <label for="politica">He leido y acepto la <a>política de privacidad</a><span aria-label="required">*</span></label>
+            </p>
+            
+            <button type="submit">ENVIAR</button>
+            
+        </form>
+        
+    </main>
+    <footer>
+        <h3>2023 &reg; JUAN ANTONIO CUELLO ALARCON</h3>
+    </footer>
+</body>
+</html>
