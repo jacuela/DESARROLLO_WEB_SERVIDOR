@@ -5,8 +5,9 @@ print "<h2>Mostramos datos con recibe_datos3.php</h2>";
 function recoge($var)
 {
     if (isset($_POST[$var])) {
-        if ($_POST[$var] != "") {
-            $tmp = trim(htmlspecialchars(strip_tags($_POST[$var])));
+        $tmp = trim($_POST[$var]);
+        if ($tmp != "") {
+            $tmp = trim(htmlspecialchars(strip_tags($tmp)));
             return $tmp;
         }
     }
@@ -25,8 +26,10 @@ if (!is_null($nombre)) {
 }
 
 
-if (!is_null($edad)) {   //Modificar despues para comprobar que sea numerico
+if (!is_null($edad) && is_numeric($edad)) {   //Modificar despues para comprobar que sea numerico
     print "Edad: $edad" . "<br>";
+} else if (!is_null($edad) && !is_numeric($edad)) {
+    print "Edad: La edad debe ser un valor numérico" . "<br>";
 } else {
     print "Edad: No se ha indicado edad" . "<br>";
 }
