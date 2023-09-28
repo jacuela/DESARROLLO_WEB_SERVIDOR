@@ -70,7 +70,7 @@ $matriz = [
 // print "</pre>";
 
 
-//Pinto la lista como una tabla
+
 
 print lista_a_tabla_html($lista);
 
