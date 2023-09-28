@@ -1,36 +1,37 @@
 <?php
 
-function recoge($var)
-{
-  if (isset($_POST[$var])) {
-    if ($_POST[$var] != "") {
-      $tmp = trim(htmlspecialchars(strip_tags($_REQUEST[$var])));
-      return $tmp;
-    }
-  }
-  return null;
-}
+require_once('../../util/utilidades.php');
+// function recoge($var)
+// {
+//   if (isset($_POST[$var])) {
+//     if ($_POST[$var] != "") {
+//       $tmp = trim(htmlspecialchars(strip_tags($_REQUEST[$var])));
+//       return $tmp;
+//     }
+//   }
+//   return null;
+// }
 
 /* si va bien redirige a principal.php si va mal, mensaje de error */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {    //hemos pulsado
 
-$nombre = recoge("nombre");
-$edad = recoge("edad");
-$OK = true;
-if (is_null($nombre)) {
-  $nombreERROR = "Falta el nombre";
-  $OK = false;
-}
-if (is_null($edad)) {
-  $edadERROR = "Falta la edad";
-  $OK = false;
-} elseif (!is_numeric($edad)) {
-  $edadERROR = "Edad debe ser un numero";
-  $OK = false;
-}
-if ($OK) {
-  header("Location: principal.php?nombre=" . $nombre . "&edad=" . $edad);
-}
+  $nombre = recoge("nombre");
+  $edad = recoge("edad");
+  $OK = true;
+  if (is_null($nombre)) {
+    $nombreERROR = "Falta el nombre";
+    $OK = false;
+  }
+  if (is_null($edad)) {
+    $edadERROR = "Falta la edad";
+    $OK = false;
+  } elseif (!is_numeric($edad)) {
+    $edadERROR = "Edad debe ser un numero";
+    $OK = false;
+  }
+  if ($OK) {
+    header("Location: principal.php?nombre=" . $nombre . "&edad=" . $edad);
+  }
 }
 ?>
 

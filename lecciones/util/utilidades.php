@@ -1,15 +1,16 @@
 <?php
 
-//
+//######## FUNCION RECOGER
+//Recoge los datos de los formularios y los depura
 function recoge($var)
 {
-  if (isset($_POST[$var])) {
-    if ($_POST[$var] != "") {
-      $tmp = trim(htmlspecialchars(strip_tags($_REQUEST[$var])));
-      return $tmp;
+    if (isset($_POST[$var])) {
+        if ($_POST[$var] != "") {
+            $tmp = trim(htmlspecialchars(strip_tags($_REQUEST[$var])));
+            return $tmp;
+        }
     }
-  }
-  return null;
+    return null;
 }
 
 
@@ -49,7 +50,6 @@ function ecuacion_grado_2($a, $b, $c)
         $solucion[] = $x1;
         $solucion[] = $x2;
         return $solucion;
-
     } elseif ($discriminante == 0) {
         // Una solución real
         $x1 = -$b / (2 * $a);
@@ -66,13 +66,14 @@ function ecuacion_grado_2($a, $b, $c)
 
 //#############
 // Función que te diga si una cadena es un palíndromo
-function esPalindromo($cadena) {
+function esPalindromo($cadena)
+{
     // Elimina espacios en blanco y convierte todo a minúsculas
     $cadena = strtolower(str_replace(' ', '', $cadena));
-    
+
     // Invierte la cadena
     $cadenaInvertida = strrev($cadena);
-    
+
     // Compara la cadena original con la cadena invertida
     if ($cadena == $cadenaInvertida) {
         return true;
