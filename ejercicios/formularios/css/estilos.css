@@ -1,17 +1,29 @@
 
 body {
     margin: 20px;
-    background-color: lightblue;
+    background-color: lightgray;
     font-family: sans-serif;
 }
 
 h1 {
     text-align: center;
     text-transform: uppercase;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 hr{
     border: 1px solid black;
 }
 
+.error{
+    color: red;
+    font-size: 1.2em;
+
+}
+
+
+.salida{
+    color: green;
+    font-size: 1.2em;
+
+}
