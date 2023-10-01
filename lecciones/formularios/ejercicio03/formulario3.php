@@ -13,7 +13,10 @@ require_once('../../util/utilidades.php');
 // }
 
 /* si va bien redirige a principal.php si va mal, mensaje de error */
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {    //hemos pulsado
+  //if (isset($_POST["submit"])){print("he pulsado");}
 
   $nombre = recoge("nombre");
   $edad = recoge("edad");
@@ -54,11 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {    //hemos pulsado
     <!-- usar 
        action = "< ?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  
      -->
-    <form action="formulario3.php" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
       <p>Nombre: <input type="text" name="nombre"></p>
       <p>Edad: <input type="text" name="edad"></p>
       </p>
-      <p><input type="submit" value="Enviar"></p>
+      <p><input type="submit" name="submit" value="Enviar"></p>
     </form>
 
     <?php

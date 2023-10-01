@@ -8,7 +8,7 @@ function lista_a_tabla_html($lista)
     foreach ($lista as $valor) {
         $s .= '<td>' . $valor . '</td>';
     }
-    $s .= '</tr>';
+    $s .= '</tr></table>';
 
     $s .= '</table>';
     return $s;

@@ -1,6 +1,6 @@
 ## 01 FORMULARIO DE SOCIOS
 
-Hacer un formulario para practicar con los diferentes controles de formularios de HTML.
+Hacer un **formulario** para practicar con los diferentes controles de formularios de HTML.
 
 Solo necesitamos el archivo html, los datos no se enviaran a ningun sitio.
 

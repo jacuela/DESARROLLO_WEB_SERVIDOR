@@ -10,8 +10,8 @@
 
 <body>
   <header>
-    <h1>Formulario 4</h1>
-    <h2>Saber que boton he pulsado</h2>
+    <h1>Formulario 5</h1>
+    <h2>Preservar valores entre llamadas POST</h2>
   </header>
   <main>
 
