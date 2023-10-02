@@ -1,3 +1,16 @@
+<?php
+
+//RECUPERO LA VARIABLE ENVIADA HIDDEN
+
+// print "<pre>";
+// print_r($_POST);
+// print "</pre>";
+
+if (isset($_POST["enviarvalorsecreto"])) {
+  $valorsecreto = $_POST["enviarvalorsecreto"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -40,6 +53,17 @@
       <p>
         <button type="submit" name="submit" value="secreto">Enviar Valor</button>
         <button type="submit" name="submit" value="otracosa">Hacer otra cosa</button>
+
+        <?php
+        //###### IMPORTANTE. SINO, NO SE PUEDE HACER
+        //Preservar la lista entre llamadas POST usando campo HIDDEN
+        //var_dump($valorsecreto);
+        if (isset($valorsecreto)) {
+          print "<input type='hidden' name='enviarvalorsecreto' value='" . $valorsecreto . "'>";
+        }
+
+        ?>
+
 
       </p>
     </form>
