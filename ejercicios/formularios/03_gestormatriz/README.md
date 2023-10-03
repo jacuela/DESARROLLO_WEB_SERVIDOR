@@ -46,3 +46,14 @@ function rellenar_lista($tam, $min, $max)
 }
 
 ```
+
+
+OJO: para borrar varios elementos de un array, usar _unset()_. Al terminar, hay que reorganizar los índices del array con la función ***array_values()***
+```php
+for ($i = 0; $i < count($lista); $i++) {
+      if ($lista[$i] == $eliminar) {
+        unset($lista[$i]);
+      }
+    }
+    $lista = array_values($lista);  //necesario si borro elementos intermedios de un array
+```
