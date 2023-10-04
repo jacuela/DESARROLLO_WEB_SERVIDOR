@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css" title="Color">
+    <title>FORMULARIO 6</title>
+</head>
+
+<body>
+    <header>
+        <h1>Formulario 6 - Subida de datos al servidor</h1>
+        
+    </header>
+    <main>
+
+     <!--
+
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+     -->   
+        <div class="borde">
+        <form action="procesar_subida.php" method="post" enctype="multipart/form-data">
+           <h3>Subida de foto de perfil</h3>
+           <p>Tamaño maximo de 1 MB  <input type="file" name="fichero"></p>
+            <p><button type="submit" name="submit" value="subirimagen">Subir Foto</button></p>
+        </form>
+        </div>
+        
+        <br><br>
+        
+        <div class="borde">
+        <form action="procesar_subida.php" method="post">
+        <h3>Subida de datos de usuario</h3>
+        <p>Usuario: <input type="text" name="nombre"></p>
+        <p>Contraseña: <input type="text" name="password"></p>
+        <p><button type="submit" name="submit" value="subirdatos">Subir datos en json</button></p>
+        </form>
+        </div>
+
+        <br><br>
+        
+        <div class="borde">
+        <form action="procesar_subida.php" method="post">
+        <h3> Mostrar datos de la bbdd</h3>
+        <p><button type="submit" name="submit" value="leerdatos">Leer datos</button></p>
+        </form>
+
+
+
+
+
+    </main>
+    <footer>
+        <hr>
+        <p>Autor: Juan Antonio Cuello</p>
+    </footer>
+</body>
+
+</html>

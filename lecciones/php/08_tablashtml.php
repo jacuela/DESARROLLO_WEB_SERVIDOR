@@ -69,11 +69,30 @@ $matriz = [
 // print_r($matriz);
 // print "</pre>";
 
+?>
 
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<?php
 print lista_a_tabla_html($lista);
 
 print "<br>";
 
 print matriz_a_tabla_html($matriz);
+
+?>
+
+
+
+</body>
+</html>
+
+
+
