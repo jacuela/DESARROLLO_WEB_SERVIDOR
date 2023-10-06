@@ -1,12 +1,42 @@
 <?php
-//session_name("sesion_cuello");
 session_start();
 
+$nombre = $_SESSION["nombre"];
+$edad = $_SESSION["edad"];
 
-print "<h1>Sesiones01_2</h1>";
+session_destroy();
 
-print "<p>El nombre es $_SESSION[nombre]</p>";
+?>
 
-//Volver
-print "<p><a href='sesiones01_1.php'>Ir a sesiones01_1.php</a></p>";
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css" title="Color">
+    <title>Formulario3</title>
+</head>
+
+<body>
+    <header>
+        <h1>PAGINA PRINCIPAL FORMULARIO 3</h1>
+    </header>
+    <main>
+        <h3>Datos recibidos:</h3>
+        <?php
+        print "Nombre: $nombre" . "<br>";
+        print "Edad: $edad" . "<br>";
+        ?>
+
+
+        <p><a href='sesiones02_1.php'>Volver al formulario</a></p>
+
+    </main>
+    <footer>
+        <hr>
+        <p>Autor: Juan Antonio Cuello</p>
+    </footer>
+</body>
+
+</html>

@@ -2,6 +2,8 @@
 
 session_start();
 
+
+
 require_once('../../util/utilidades.php');
 // function recoge($var)
 // {
@@ -23,19 +25,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {    //hemos pulsado
   $nombre = recoge("nombre");
   $edad = recoge("edad");
   $OK = true;
+
+  //Recojo el nombre
   if (is_null($nombre)) {
     $nombreERROR = "Falta el nombre";
     $OK = false;
+  } else {
+    $_SESSION["nombre"] = $nombre;
   }
+
+  //Recojo la edad 
   if (is_null($edad)) {
     $edadERROR = "Falta la edad";
     $OK = false;
   } elseif (!is_numeric($edad)) {
     $edadERROR = "Edad debe ser un numero";
     $OK = false;
+  } else {
+    $_SESSION["edad"] = $edad;
   }
   if ($OK) {
-    header("Location: principal.php?nombre=" . $nombre . "&edad=" . $edad);
+    //Me creo las variables de sesion
+    // $_SESSION["nombre"] = $nombre;
+    // $_SESSION["edad"] = $edad;
+
+    header("Location: sesiones02_2.php");
   }
 }
 ?>
@@ -60,8 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {    //hemos pulsado
        action = "< ?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  
      -->
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-      <p>Nombre: <input type="text" name="nombre"></p>
-      <p>Edad: <input type="text" name="edad"></p>
+      <p>Nombre: <input type="text" name="nombre" value="<?php echo !empty($_SESSION['nombre']) ? $_SESSION['nombre'] : ''; ?>"></p>
+      <p>Edad: <input type="text" name="edad" value="<?php echo !empty($_SESSION['edad']) ? $_SESSION['edad'] : ''; ?>"></p>
       </p>
       <p><input type="submit" name="submit" value="Enviar"></p>
     </form>
