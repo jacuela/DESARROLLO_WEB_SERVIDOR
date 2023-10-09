@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {    //hemos pulsado
     <h1>Formulario 3</h1>
   </header>
   <main>
-
+ 
     <!-- usar 
        action = "< ?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  
      -->
@@ -83,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {    //hemos pulsado
     <?php
     if (isset($nombreERROR)) {
       print "<p class='error'>$nombreERROR</p>";
+      
     }
     if (isset($edadERROR)) {
       print "<p class='error'>$edadERROR</p>";
