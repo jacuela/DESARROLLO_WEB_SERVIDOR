@@ -1,6 +1,6 @@
 ## 01 BOTÓN MAS Y MENOS
 
-Escriba un programa de dos páginas que muestre un valor numérico y permita subirlo o bajarlo mediante dos botones.
+Escriba un programa de dos páginas que muestre un valor numérico y permita subirlo o bajarlo mediante dos botones. Los valores mínimo y máximo a mostrar son 0 y 9 respectivamente. Si llegamos a esos valores límite, al pulsar el botón no haremos nada.
 
 - La primera página contiene un formulario con tres botones de tipo submit con el mismo name.
 - La segunda página recibe el dato, modifica el número y redirige a la primera página.
