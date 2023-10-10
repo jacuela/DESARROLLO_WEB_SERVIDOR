@@ -1,0 +1,39 @@
+[
+    {
+      "nombre": "Adolfo Martinez",
+      "email": "adolfo@test.com",
+      "edad": 45,
+      "salario": 2800,
+      "direccion":{
+        "calle":"Avenida de europa",
+        "numero":1,
+        "ciudad":"Lorca"
+      },
+      "materias":["diseño intefaces","entorno cliente"]
+    },
+    {
+      "nombre": "Juan Antonio Cuello",
+      "email": "cuello@test.com",
+      "edad": 43,
+      "salario": 1900,
+      "direccion":{
+        "calle":"Avenida juan carlos I",
+        "numero":4,
+        "ciudad":"Lorca"
+      },
+      "materias":["despliegue web","entorno cliente"]
+    },
+    {
+      "nombre": "Agustín Ruiz",
+      "email": "agustin@test.com",
+      "edad": 46,
+      "salario": 2000,
+      "direccion":{
+        "calle":"Plaza ovalo",
+        "numero":1,
+        "ciudad":"Lorca"
+      },
+      "materias":["lenguaje de marcas"]
+    }
+
+  ]
