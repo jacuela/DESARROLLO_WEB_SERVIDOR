@@ -7,7 +7,9 @@
 //mostrar todos los datos de profesores
 $file = 'bbdd/profesores.json';
 $jsonData = file_get_contents("./{$file}", FILE_USE_INCLUDE_PATH); 
-$profesores = json_decode($jsonData);
+$profesores = json_decode($jsonData); //leo como objeto los json
+
+print (gettype($profesores));  //devuelve array porque es un array de json
 
 print "<h3>Listados de profesors</h3>";
 foreach ($profesores as $profesor){
