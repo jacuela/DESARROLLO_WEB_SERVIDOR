@@ -12,6 +12,7 @@ $profesores = json_decode($jsonData); //leo como objeto los json
 print (gettype($profesores));  //devuelve array porque es un array de json
 
 print "<h3>Listados de profesors</h3>";
+
 foreach ($profesores as $profesor){
     print ("Nombre: $profesor->nombre <br>");
     print ("Email: $profesor->email <br>");

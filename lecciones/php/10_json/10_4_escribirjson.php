@@ -23,8 +23,6 @@ $file = 'bbdd/datos2.json';    //la carpeta bbdd debe existir
 file_put_contents($file, $json_lista_personas);
 
 
-
-
 //####### METEMOS UN SEGUNDO ELEMENTO
 //- CARGAMOS TODOS LOS DATOS DEL ARCHIVO
 //- CREAMOS UN ARRAY CON LOS DATOS
