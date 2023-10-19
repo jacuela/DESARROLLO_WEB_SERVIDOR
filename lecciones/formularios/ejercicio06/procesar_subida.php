@@ -26,15 +26,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         print "Ruta tamporal: $rutaTemporal<br>";
 
         //Compruebo tamaño y lo subo
+        if ($_FILES["fichero"]["size"] < 1000000) {
+            $ruta_subida = "bbdd/";
+            // $res = move_uploaded_file($rutaTemporal, $ruta_subida . $nombreFichero);
+            $res = move_uploaded_file($_FILES["fichero"]["tmp_name"], $ruta_subida . $_FILES["fichero"]["name"]);
 
-        $ruta_subida = "bbdd/";
-        // $res = move_uploaded_file($rutaTemporal, $ruta_subida . $nombreFichero);
-        $res = move_uploaded_file($_FILES["fichero"]["tmp_name"], $ruta_subida . $_FILES["fichero"]["name"]);
-
-        if ($res) {
-            print "Fichero Guardado correctamente<br>";
+            if ($res) {
+                print "Fichero Guardado correctamente<br>";
+            } else {
+                print "Error al guardar fichero<br>";
+            }
         } else {
-            print "Error al guardar fichero<br>";
+            print("<h4>ERROR: archivo demasiado grande</h4><br>");
         }
     }
 

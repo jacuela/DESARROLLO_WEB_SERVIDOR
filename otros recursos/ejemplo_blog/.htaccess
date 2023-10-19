@@ -1,0 +1,4 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+#Cambiamops api/noticas/X por api.php?postid=X
+RewriteRule ^api/noticias/([0-9]*)$ api.php?postid=$1 [NC,L]

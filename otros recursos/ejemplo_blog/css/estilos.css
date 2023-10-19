@@ -1,0 +1,154 @@
+html {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+  
+body {
+      text-align: center;
+      margin: 50px;
+      background-color: #F2F3F4;
+}
+  
+hr {
+      border:  black 1px solid;
+}
+  
+h1, h2, h3 {
+        color:  green;
+        font-family: Optima;
+}
+  
+p.fecha{
+    color:blue;
+}  
+  
+
+  
+/* esto es para el menu */
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+  
+nav ul li.izda {
+    float: left;      
+}
+
+nav ul li.drcha {
+    float: right;      
+}
+
+a.menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+a.menu2 {
+    display: block;
+    color: red;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+a.menu:hover {
+    background-color: green;
+}
+  
+/*fin del menu*/
+ 
+
+
+article {
+    background-color: white;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 5px 2px grey;
+      
+}
+  
+article.resumen div{
+    text-align: left;
+    
+}
+
+article img{
+    width: 400px;    
+}  
+article.resumen img{
+    width: 200px;
+    float: left;
+    margin-right: 50px;    
+}  
+article.resumen::after{
+    clear:both;
+}
+
+article a{
+    text-decoration: none;
+}
+article h2:hover{
+    color: red;
+}
+  
+
+/*formulario de inicio*/
+
+form h2{
+    font-size:1.5em;
+    color:#525252;
+  }
+  
+  .box{
+    background:white;
+    width:400px;
+    border-radius:6px;
+    margin: 0 auto 0 auto;
+    padding:0px 0px 70px 0px;
+    border: green 4px solid; 
+  }
+  
+  .inputCampo{
+    background:#ecf0f1;
+    border: #ccc 1px solid;
+    border-bottom: #ccc 2px solid;
+    padding: 8px;
+    width:250px;
+    margin-top:10px;
+    font-size:1em;
+    border-radius:4px;
+  }
+  
+  
+  .btn{
+    background:#2ecc71;
+    width:125px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:white;
+    border-radius:4px;
+    border: #27ae60 1px solid;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:16px;
+    font-size:1.3em;
+  }
+  
+  .btn:hover{
+    background:green; 
+  }
+  
+  .error{
+    color:red;
+    font-size: 1.5em;
+    font-weight: 800;
+  }
