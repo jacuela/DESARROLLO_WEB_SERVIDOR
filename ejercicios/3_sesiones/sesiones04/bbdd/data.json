@@ -40,5 +40,19 @@
         "email": "bonica2@kk.com",
         "password": "00",
         "imagen": "default.png"
+    },
+    {
+        "nombre": "Reyes",
+        "apellidos": "Alarcon",
+        "email": "mama@kk.com",
+        "password": "1234",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": "Dario",
+        "apellidos": "Cuello Mi\u00f1arro",
+        "email": "dario3@kk.com",
+        "password": "1234",
+        "imagen": "default.png"
     }
 ]
