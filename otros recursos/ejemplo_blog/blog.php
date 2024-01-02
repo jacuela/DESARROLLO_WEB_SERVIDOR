@@ -1,5 +1,5 @@
 <?php 
-    require_once('funciones.php');
+    require_once('includes/funciones.php');
     session_start();
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once("modelo.php");
+require_once("modelo/modelo.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // print "<pre>";

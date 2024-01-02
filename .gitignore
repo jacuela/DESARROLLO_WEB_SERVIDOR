@@ -9,3 +9,8 @@
 #./pruebas/*
 #pruebas/*.*
 /pruebas
+
+#./profesor/*
+#profesor/*.*
+/profesor
+
