@@ -6,7 +6,12 @@ El menú y el footer serán archivos independientes, y lo que haremos, será inc
 
 Además, vamos a reorganizar las carpetas de mi proyecto, para que sea más acorde a como lo hace un framework. Estará todo más ordenado. En realidad, este orden es algo opcional, pero es una buena práctica de cara a un futuro mantenimiento.
 
-Adicionalmente, vamos a aprender a crearnos una cookie para guardar información en el lado del cliente. En este caso, indicaremos en la pantalla principal, la fecha y hora de creación del ultimo usuario.
+**Otras tareas**
+
+- Vamos a aprender a crearnos una cookie para guardar información en el lado del cliente. En este caso, indicaremos en la pantalla principal, nombre, la fecha y hora de creación del ultimo usuario.
+- Almaceranemos la constraseña cifrada, usando la funcion *password_hash()* para encriptarla y *password_verify()* para desencriptarla.
+
+ 
 
 
 ![index sin loguear](img/index.png)
