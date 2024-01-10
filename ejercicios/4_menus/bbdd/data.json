@@ -1,0 +1,65 @@
+[
+    {
+        "nombre": "Alicia",
+        "apellidos": "Cano",
+        "email": "ali@kk.com",
+        "password": "1234",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": "Juan Antonio",
+        "apellidos": "Cuello Alarcon",
+        "email": "jacuela@kk.com",
+        "password": "1234",
+        "imagen": "imagen_perfil_pequen\u0303a.jpg"
+    },
+    {
+        "nombre": "Dario",
+        "apellidos": "Cuello Mi\u00f1arro",
+        "email": "dario@kk.com",
+        "password": "dc",
+        "imagen": "pearl-jam-gigaton-1-1068x1068.jpg"
+    },
+    {
+        "nombre": "Paco",
+        "apellidos": "Paco",
+        "email": "paco@kk",
+        "password": "1234",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": null,
+        "apellidos": null,
+        "email": "bonica@kk.com",
+        "password": "1234",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": null,
+        "apellidos": null,
+        "email": "bonica2@kk.com",
+        "password": "00",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": "Reyes",
+        "apellidos": "Alarcon",
+        "email": "mama@kk.com",
+        "password": "1234",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": "Dario",
+        "apellidos": "Cuello Mi\u00f1arro",
+        "email": "dario3@kk.com",
+        "password": "1234",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": "kk5",
+        "apellidos": "kk5",
+        "email": "kk5@kk.com",
+        "password": "1234",
+        "imagen": "default.png"
+    }
+]
