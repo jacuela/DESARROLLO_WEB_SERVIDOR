@@ -95,7 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario->nombre = $nombre;
         $usuario->apellidos = $apellidos;
         $usuario->email = $email;
-        $usuario->password = $password;
+
+        //Codifico la contraseña
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $usuario->password = $passwordHash;
+
         if ($_FILES["fichero"]["error"] == UPLOAD_ERR_OK) {
             $usuario->imagen = $nombreFichero;
         }

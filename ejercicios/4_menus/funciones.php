@@ -34,7 +34,10 @@ function checkuser($user, $password)
     $lista_usuarios = json_decode($jsonData);
 
     foreach ($lista_usuarios as $usuario) {
-        if ($usuario->email == $user and $usuario->password == $password) {
+        if (
+            $usuario->email == $user and
+            password_verify($password, $usuario->password)
+        ) {
 
             //Me creo el objeto. Podría haber devuelto directamente el object literal, sin usar la clase Usuario
             $usuarioObjeto = new Usuario;
