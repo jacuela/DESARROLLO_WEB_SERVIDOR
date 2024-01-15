@@ -111,6 +111,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // print "</pre>";
         file_put_contents("bbdd/data.json", $json_usuarios);
 
+        //Me creo la COOKIE para 10 días. Hay que indicar los segundos de 10 días
+        //10 dias x 24 horas/dia x 3600 segundos/hora
+        setcookie("Ultimo_usuario", $usuario->email, time() + 3600 * 24 * 10, "/");
+        $fecha_y_hora = date("d-m-Y H:i:s");
+        setcookie("Ultimo_usuario_fecha", $fecha_y_hora, time() + 3600 * 24 * 10, "/");
+
         unset($_SESSION["usuario"]);
 
         //session_destroy();

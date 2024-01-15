@@ -36,8 +36,12 @@ session_start();
 
         echo '<h2> Total de usuarios de alta: ' . count($lista_usuarios) . '</h2>';
 
+        if (isset($_COOKIE["Ultimo_usuario"]) && isset($_COOKIE["Ultimo_usuario_fecha"])) {
+            $cookie_usuario = $_COOKIE["Ultimo_usuario"];
+            $cookie_fecha = $_COOKIE["Ultimo_usuario_fecha"];
+            echo "<p>Ultimo usuario <strong> {$cookie_usuario} </strong> creado el <strong>{$cookie_fecha}</strong></p>";
+        }
         ?>
-        <p> Mostrarmos la fecha y hora de creación del ultimo usuario con una cookie</p>
 
 
     </main>
