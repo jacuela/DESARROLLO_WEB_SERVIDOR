@@ -46,6 +46,19 @@ if (!$resultado) {
     }
     print "    </table>\n";
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     //USANDO UN WHILE CON FWTCH
     // while ($registro = $resultado->fetch()) {
     //     print "      <tr>\n";
@@ -68,20 +81,20 @@ if (!$resultado) {
 }
 
 
-$apellido = "Cuello";
-print("<h3>¿Cuantos tienen de apellido " . $apellido . "</h3>");
+// $apellido = "Cuello";
+// print("<h3>¿Cuantos tienen de apellido " . $apellido . "</h3>");
 
-$consulta = "SELECT COUNT(*) FROM personas
-             WHERE apellidos LIKE '%$apellido%'";
+// $consulta = "SELECT COUNT(*) FROM personas
+//              WHERE apellidos LIKE '%$apellido%'";
 
-$resultado = $pdo->query($consulta);
+// $resultado = $pdo->query($consulta);
 
-if (!$resultado) {
-    print "    <p>Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-} else {
-    print "    <p>Se han encontrado {$resultado->fetchColumn()} registro(s).</p>\n";
-    print "\n";
-}
+// if (!$resultado) {
+//     print "    <p>Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+// } else {
+//     print "    <p>Se han encontrado {$resultado->fetchColumn()} registro(s).</p>\n";
+//     print "\n";
+// }
 
 
 
