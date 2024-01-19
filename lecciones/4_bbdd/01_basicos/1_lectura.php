@@ -7,7 +7,9 @@ $pdo = conectaDb();
 
 //Consulta sin preparar
 
-$consulta = "SELECT * FROM personas";
+$tabla = "personas";    //otro año probar la inyeccion con ;DROP TABLE personas
+
+$consulta = "SELECT * FROM $tabla";
 //$consulta = "SELECT * FROM personas where id=2";
 //$consulta = "SELECT * FROM personas where id=5";
 
@@ -46,18 +48,7 @@ if (!$resultado) {
     }
     print "    </table>\n";
 
-
-
-
-
-
-
-
-
-
-
-
-
+    print "<hr>";
 
     //USANDO UN WHILE CON FWTCH
     // while ($registro = $resultado->fetch()) {
@@ -70,8 +61,6 @@ if (!$resultado) {
     // }
     // print "    </table>\n";
 
-
-
     // print "<hr>";
     // print("<p>Listado de edades</p>");
     // //OJO, FETCH COLUMN OBTIENE DATO Y AVANZA A LA SIGUIENTE TUPLA
@@ -81,20 +70,20 @@ if (!$resultado) {
 }
 
 
-// $apellido = "Cuello";
-// print("<h3>¿Cuantos tienen de apellido " . $apellido . "</h3>");
+$apellido = "Cuello";
+print("<h3>¿Cuantos tienen de apellido " . $apellido . "</h3>");
 
-// $consulta = "SELECT COUNT(*) FROM personas
-//              WHERE apellidos LIKE '%$apellido%'";
+$consulta = "SELECT COUNT(*) FROM personas
+             WHERE apellidos LIKE '%$apellido%'";
 
-// $resultado = $pdo->query($consulta);
+$resultado = $pdo->query($consulta);
 
-// if (!$resultado) {
-//     print "    <p>Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-// } else {
-//     print "    <p>Se han encontrado {$resultado->fetchColumn()} registro(s).</p>\n";
-//     print "\n";
-// }
+if (!$resultado) {
+    print "    <p>Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+} else {
+    print "    <p>Se han encontrado {$resultado->fetchColumn()} registro(s).</p>\n";
+    print "\n";
+}
 
 
 

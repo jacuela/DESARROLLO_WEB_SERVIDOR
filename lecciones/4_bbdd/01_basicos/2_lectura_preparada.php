@@ -10,14 +10,14 @@ $id = "2";
 $nombre = "Alicia";
 
 //Consulta preparada usando ?   El orden sí importa
-$consulta_preparada1 = "SELECT * FROM personas WHERE id = ? AND nombre = ?";
-$resultado = $pdo->prepare($consulta_preparada1);
-$resultado->execute([$id, $nombre]);
+// $consulta_preparada1 = "SELECT * FROM personas WHERE id = ? AND nombre = ?";
+// $resultado = $pdo->prepare($consulta_preparada1);
+// $resultado->execute([$id, $nombre]);
 
 //Consulta preparada usando :valor   El orden no importa
-// $consulta_preparada2 = "SELECT * FROM personas WHERE id = :valor1 AND nombre = :valor2";
-// $resultado = $pdo->prepare($consulta_preparada2);
-// $resultado->execute([":valor2" => $nombre, ":valor1" => $id]);
+$consulta_preparada2 = "SELECT * FROM personas WHERE id = :valor1 AND nombre = :valor2";
+$resultado = $pdo->prepare($consulta_preparada2);
+$resultado->execute([":valor2" => $nombre, ":valor1" => $id]);
 
 
 print "<h2>CONSULTA PREPARADA</h2>";

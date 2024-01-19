@@ -5,7 +5,7 @@ require_once "funciones.php";
 $pdo = conectaDb();
 
 //BORRO LA BBDD
-$consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase_prueba]";
+$consulta = "DROP DATABASE IF EXISTS personas_prueba";
 
 if (!$pdo->query($consulta)) {
     print "    <p>Error al borrar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
