@@ -15,7 +15,7 @@ require_once("funciones.php");
 
 <body>
     <?php
-    cabecera("Inicio", MENU_PRINCIPAL);
+        cabecera("Inicio", MENU_PRINCIPAL);
     ?>
     <main>
     </main>
@@ -24,4 +24,5 @@ require_once("funciones.php");
     pie();
     ?>
 </body>
+
 </html>
