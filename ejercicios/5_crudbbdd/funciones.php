@@ -22,6 +22,9 @@ function cabecera($texto, $menu)
     print "      <ul>\n";
     if ($menu == MENU_PRINCIPAL) {
         print "        <li><a href='borrar-todo-1.php'>Borrar todo</a></li>\n";
+        print "        <li><a href='listar.php'>Listar</a></li>\n";
+        print "        <li><a href='insertar-1.php'>Insertar</a></li>\n";
+
     } elseif ($menu == MENU_VOLVER) {
         print "        <li><a href='index.php'>Volver</a></li>\n";
     } else {
