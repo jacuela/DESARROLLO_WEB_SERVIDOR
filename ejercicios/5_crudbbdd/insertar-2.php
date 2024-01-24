@@ -7,10 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $apellidos = recoge("apellidos");
 
     //Deberiamos hacer comprobaciones, del tipo longitud max y min
+    //o comprobar si esta en blanco el dato
     //aquí se pueden comproblar con el mismo formulario
     //Como no comprobamos nada, poenemos el OK a true de los dos
     $nombreOK    = true;
     $apellidosOK = true;
+
 }
 
 ?>
