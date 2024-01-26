@@ -6,6 +6,7 @@
 //ESTO LO SOLUCIONA
 require_once(__DIR__ . '/../config.php');
 
+print("VALOR QUE NECESITO-->" . VALORQUENECESITO);
 
 function ir_a_inicio()
 {
