@@ -1,6 +1,29 @@
 <?php
-require_once(__DIR__ . "/includes/funciones.php");
+session_start();
+require_once(__DIR__ . '/includes/funciones.php');
+
+if (isset($_SESSION["listaPersonas"])) {
+    $listaPersonas = $_SESSION["listaPersonas"];
+    unset($_SESSION["listaPersonas"]);
+} else {
+    $_SESSION["borrar"] = true;
+    header("Location: ./backend/bbdd-listar.php");
+    exit();
+}
+
+if (isset($_SESSION["errorNoMarcado"])) {
+    $errorNoMarcado = $_SESSION["errorNoMarcado"];
+    unset($_SESSION["errorNoMarcado"]);
+}
+
+if (isset($_SESSION["borrarOK"])) {
+    $borrarOK = $_SESSION["borrarOK"];
+
+    unset($_SESSION["borrarOK"]);
+}
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -21,45 +44,46 @@ require_once(__DIR__ . "/includes/funciones.php");
     ?>
 
     <main>
+
+        <form action='backend/bbdd-borrar.php' method='post'>
+            <p>Marque los registros que quiera borrar:</p>
+
+            <table class="conborde franjas">
+                <thead>
+                    <tr>
+                        <th>Borrar</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                    </tr>
+                </thead>
+                <?php
+
+                foreach ($listaPersonas as $persona) {
+                    print " <tr>\n";
+                    print " <td class=\"centrado\"><input type=\"checkbox\" name=\"listaids[$persona[id]]\"></td>\n";
+                    print " <td>$persona[nombre]</td>\n";
+                    print " <td>$persona[apellidos]</td>\n";
+                    print " </tr>\n";
+                }
+                ?>
+            </table>
+
+            <p>
+                <input type="submit" value="Borrar registros">
+                <input type="reset" value="Reiniciar">
+            </p>
+
+        </form>
+
         <?php
-        $pdo = conectaDb();
-        $consulta = "SELECT * FROM $cfg[nombretabla]";
-
-        $resultado = $pdo->query($consulta);
-        if (!$resultado) {
-            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } else {
-            print "    <form action='borrar-2.php' method='post'>";
-            print "      <p>Marque los registros que quiera borrar:</p>\n";
-            print "\n";
-            print "      <table class=\"conborde franjas\">\n";
-            print "        <thead>\n";
-            print "          <tr>\n";
-            print "            <th>Borrar</th>\n";
-            print "            <th>Nombre</th>\n";
-            print "            <th>Apellidos</th>\n";
-            print "          </tr>\n";
-            print "        </thead>\n";
-            foreach ($resultado as $registro) {
-
-                print "        <tr>\n";
-                print "          <td class=\"centrado\"><input type=\"checkbox\" name=\"listaids[$registro[id]]\"></td>\n";
-
-                print "          <td>$registro[nombre]</td>\n";
-                print "          <td>$registro[apellidos]</td>\n";
-                print "        </tr>\n";
-            }
-            print "      </table>\n";
-
-            //Botones
-            print "\n";
-            print "      <p>\n";
-            print "        <input type=\"submit\" value=\"Borrar registro\">\n";
-            print "        <input type=\"reset\" value=\"Reiniciar\">\n";
-            print "      </p>\n";
-            print "    </form>\n";
+        if (isset($errorNoMarcado)) {
+            print "<p class='error'>$errorNoMarcado</p>";
+        }
+        if (isset($borrarOK)) {
+            print "<p class='exito fade-in-out'>Personas borradas correctamente</p>";
         }
         ?>
+
     </main>
     <?php
     pie();

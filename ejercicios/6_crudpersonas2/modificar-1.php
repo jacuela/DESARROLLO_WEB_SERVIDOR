@@ -1,5 +1,16 @@
 <?php
-require_once(__DIR__."/includes/funciones.php");
+session_start();
+require_once(__DIR__ . '/includes/funciones.php');
+
+if (isset($_SESSION["listaPersonas"])) {
+    $listaPersonas = $_SESSION["listaPersonas"];
+    unset($_SESSION["listaPersonas"]);
+} else {
+    $_SESSION["modificar"] = true;
+    header("Location: ./backend/bbdd-listar.php");
+    exit();
+}
+
 ?>
 
 
@@ -21,44 +32,38 @@ require_once(__DIR__."/includes/funciones.php");
     ?>
 
     <main>
-        <?php
-        $pdo = conectaDb();
-        $consulta = "SELECT * FROM $cfg[nombretabla]";
 
-        $resultado = $pdo->query($consulta);
-        if (!$resultado) {
-            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        } else {
-            print "    <form action='modificar-2.php' method='post'>";
-            print "      <p>Indique el registro que quiera modificar:</p>\n";
-            print "\n";
-            print "      <table class=\"conborde franjas\">\n";
-            print "        <thead>\n";
-            print "          <tr>\n";
-            print "            <th>Borrar</th>\n";
-            print "            <th>Nombre</th>\n";
-            print "            <th>Apellidos</th>\n";
-            print "          </tr>\n";
-            print "        </thead>\n";
-            foreach ($resultado as $registro) {
+        <form action='backend/bbdd-obtener-id.php' method='post'>
+            <p>Indique el registro que quiera modificar:</p>
 
-                print "        <tr>\n";
-                print "          <td class=\"centrado\"><input type=\"radio\" name=\"id\" value=\"$registro[id]\"></td>\n";
-                print "          <td>$registro[nombre]</td>\n";
-                print "          <td>$registro[apellidos]</td>\n";
-                print "        </tr>\n";
-            }
-            print "      </table>\n";
+            <table class="conborde franjas">
+                <thead>
+                    <tr>
+                        <th>Mofificar</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                    </tr>
+                </thead>
+                <?php
 
-            //Botones
-            print "\n";
-            print "      <p>\n";
-            print "        <input type=\"submit\" value=\"Actualizar registro\">\n";
-            print "        <input type=\"reset\" value=\"Reiniciar\">\n";
-            print "      </p>\n";
-            print "    </form>\n";
-        }
-        ?>
+                foreach ($listaPersonas as $persona) {
+                    print " <tr>\n";
+                    print " <td class=\" centrado\"><input type=\"radio\" name=\"id\" value=\"$persona[id]\"></td>\n";
+                    print " <td>$persona[nombre]</td>\n";
+                    print " <td>$persona[apellidos]</td>\n";
+                    print " </tr>\n";
+                }
+                ?>
+            </table>
+
+            <p>
+                <input type="submit" value="Actualizar registro">
+                <input type="reset" value="Reiniciar">
+            </p>
+
+        </form>
+
+
     </main>
     <?php
     pie();

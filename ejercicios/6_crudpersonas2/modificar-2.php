@@ -1,16 +1,34 @@
 <?php
-require_once(__DIR__."/includes/funciones.php");
+session_start();
+require_once(__DIR__ . '/includes/funciones.php');
+
+// print("<pre>");
+// print_r($_SESSION);
+// print("</pre>");
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_SESSION["errorNombre"])) {
+    $errorNombre = $_SESSION["errorNombre"];
+}
 
-    // print_r($_POST);
+if (isset($_SESSION["errorApellidos"])) {
+    $errorApellidos = $_SESSION["errorApellidos"];
+}
 
-    $id = recoge("id");
+if (isset($_SESSION["errorBBDD"])) {
+    $errorBBDD = $_SESSION["errorBBDD"];
+}
 
-    // foreach ($listaids as $id => $valor) {
-    //     print("id a borrar:" . $id . "<br>");
-    // }
+if (isset($_SESSION["modificarOK"])) {
+    $modificarOK = $_SESSION["modificarOK"];
+}
+
+
+if (isset($_SESSION["registro_a_actualizar"])) {
+    $registro = $_SESSION["registro_a_actualizar"];
+} else {
+    header("Location: ./index.php");
+    exit();
 }
 
 ?>
@@ -35,43 +53,79 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
 
         <?php
-        if ($id == "") {
+        
+        if ($registro == "") {
             print "    <p class=\"aviso\">No se ha seleccionado ningún registro.</p>\n";
         } else {
-            $pdo = conectaDb();
-            $consulta = "SELECT * FROM $cfg[nombretabla]
-                WHERE id = :id";
 
-            $resultado = $pdo->prepare($consulta);
-            if (!$resultado) {
-                print "    <p class=\"aviso\">Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } elseif (!$resultado->execute([":id" =>$id])) {
-                print "    <p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            print "    <form action=\"backend/bbdd-modificar.php\" method=\"post\">\n";
+            print "      <p>Modifique los campos que desee:</p>\n";
+            print "\n";
+            print "      <table>\n";
+            print "        <tr>\n";
+            print "          <td>Nombre:</td>\n";
+
+            if (isset($modificarOK) and $modificarOK == true) {
+                //Los datos han sido ya modificados. Muestro el input vacio
+                print "          <td><input type=\"text\" name=\"nombre\" size=50 autofocus></td>\n";
             } else {
-                $registro = $resultado->fetch();
-                print "    <form action=\"modificar-3.php\" method=\"post\">\n";
-                print "      <p>Modifique los campos que desee:</p>\n";
-                print "\n";
-                print "      <table>\n";
-                print "        <tr>\n";
-                print "          <td>Nombre:</td>\n";
+                //Los datos aún no han sido modificados. Vengo del listado
                 print "          <td><input type=\"text\" name=\"nombre\" size=50 value=\"$registro[nombre]\" autofocus></td>\n";
-                print "        </tr>\n";
-                print "        <tr>\n";
-                print "          <td>Apellidos:</td>\n";
-                print "          <td><input type=\"text\" name=\"apellidos\" size=50 value=\"$registro[apellidos]\"></td>\n";
-                print "        </tr>\n";
-                print "      </table>\n";
-                print "\n";
-                print "      <p>\n";
-                print "        <input type=\"hidden\" name=\"id\" value=\"$id\">\n";
-                print "        <input type=\"submit\" value=\"Actualizar\">\n";
-                print "        <input type=\"reset\" value=\"Reiniciar formulario\">\n";
-                print "      </p>\n";
-                print "    </form>\n";
             }
+
+            print "        </tr>\n";
+            print "        <tr>\n";
+            print "          <td>Apellidos:</td>\n";
+
+
+            if (isset($modificarOK) and $modificarOK == true) {
+                //Los datos han sido ya modificados. Muestro el input vacio
+                print "          <td><input type=\"text\" name=\"apellidos\" size=50 ></td>\n";
+            } else {
+                //Los datos aún no han sido modificados. Vengo del listado
+                print "          <td><input type=\"text\" name=\"apellidos\" size=50 value=\"$registro[apellidos]\"></td>\n";
+            }
+
+
+            print "        </tr>\n";
+            print "      </table>\n";
+            print "\n";
+            print "      <p>\n";
+            print "        <input type=\"hidden\" name=\"id\" value=\"$registro[id]\">\n";
+            print "        <input type=\"submit\" value=\"Actualizar\">\n";
+            print "        <input type=\"reset\" value=\"Reiniciar formulario\">\n";
+            print "      </p>\n";
+            print "    </form>\n";
         }
         ?>
+
+        <?php
+        if (isset($errorNombre)) {
+            print "<p class='error'>$errorNombre</p>";
+        }
+        if (isset($errorApellidos)) {
+            print "<p class='error'>$errorApellidos</p>";
+        }
+
+        if (isset($errorBBDD)) {
+            print "<p class='error'>$errorBBDD</p>";
+        }
+
+        if (isset($modificarOK) && $modificarOK == true) {
+            print "<p class='exito fade-in-out'>Persona actualizada correctamente</p>";
+        }
+
+        //En caso de recargar la pagina, no quiero mostrar otra vez los errores
+        //Y quiero que aparezca el formulario limpio
+        unset($_SESSION["errorNombre"]);
+        unset($_SESSION["errorApellidos"]);
+        unset($_SESSION["errorBBDD"]);
+        unset($_SESSION["modificarOK"]);
+
+
+
+        ?>
+
 
     </main>
 

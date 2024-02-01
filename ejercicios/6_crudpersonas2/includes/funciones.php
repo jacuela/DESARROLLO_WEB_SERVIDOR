@@ -91,37 +91,41 @@ function conectaDb()
 function borraTodo()
 {
     global $pdo, $cfg;
-
-    print "    <p>Sistema Gestor de Bases de Datos: MySQL.</p>\n";
-    print "\n";
+    $mensaje = "";
 
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al borrar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        //print "    <p class=\"aviso\">Error al borrar la base de datos." SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        $mensaje = $mensaje . "<p class=\"aviso\">Error al borrar la base de datos.</p>";
     } else {
-        print "    <p>Base de datos borrada correctamente (si existía).</p>\n";
+        //print "    <p>Base de datos borrada correctamente (si existía).</p>\n";
+        $mensaje = $mensaje . "<p>Base de datos borrada correctamente (si existía).</p>";
     }
-    print "\n";
+
 
     $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
                  CHARACTER SET utf8mb4
                  COLLATE utf8mb4_unicode_ci";
 
     if (!$pdo->query($consulta)) {
-        print "    <p class=\"aviso\">Error al crear la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        //print "    <p class=\"aviso\">Error al crear la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        $mensaje = $mensaje . "<p class=\"aviso\">Error al crear la la base de datos.</p>";
     } else {
-        print "    <p>Base de datos creada correctamente.</p>\n";
-        print "\n";
+        //print "    <p>Base de datos creada correctamente.</p>\n";
+        $mensaje = $mensaje . "<p>Base de datos creada correctamente (si existía).</p>";
 
         $consulta = "USE $cfg[mysqlDatabase]";
 
         if (!$pdo->query($consulta)) {
-            print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            return false;
+            //print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            $mensaje = $mensaje . "<p class=\"aviso\">Error en la consulta.</p>";
+            //return false;
+            return $mensaje;
         } else {
-            print "    <p>Base de datos seleccionada correctamente.</p>\n";
-            print "\n";
+            //print "    <p>Base de datos seleccionada correctamente.</p>\n";
+            $mensaje = $mensaje . "<p>Base de datos seleccionada correctamente</p>";
+
 
             $consulta = "CREATE TABLE $cfg[nombretabla] (
                          id INTEGER UNSIGNED AUTO_INCREMENT,
@@ -131,11 +135,15 @@ function borraTodo()
                          )";
 
             if (!$pdo->query($consulta)) {
-                print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-                return false;
+                //print "    <p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+                $mensaje = $mensaje . "<p class=\"aviso\">Error al crear la tabla.</p>";
+                //return false;
+                return $mensaje;
             } else {
-                print "    <p>Tabla creada correctamente.</p>\n";
-                return true;
+                //print "    <p>Tabla creada correctamente.</p>\n";
+                $mensaje = $mensaje . "<p>Tabla creada correctamente.</p>";
+                //return true;
+                return $mensaje;
             }
         }
     }
