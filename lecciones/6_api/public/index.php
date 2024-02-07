@@ -38,11 +38,14 @@ switch ($requestMethod) {
             exit();
         }else{
             //Tendriamos que conectarnos a la bbdd y devolver lista empleados
+            //Endpoint    /empleados/
+
+            //Pedir la lista de empleados a la bbdd
+
             $body = "Lista de empleados";
             header("HTTP/1.1 200");
             echo json_encode($body);
             exit();
-
         }
 
     default:
