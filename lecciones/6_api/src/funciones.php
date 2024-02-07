@@ -51,3 +51,52 @@ function obtenerEmpleadosBBDD()
         return $listaEmpleados;
     }
 }
+
+function obtenerEmpleadoBBDD($id)
+{
+
+    global $cfg;
+    global $pdo;
+
+    //$pdo = conectaDb();
+    $consulta = "SELECT * FROM $cfg[nombretabla] WHERE id=$id";
+
+    $resultado = $pdo->query($consulta);
+    if (!$resultado) {
+        return null;
+    } else {
+        return $resultado->fetch(PDO::FETCH_ASSOC);
+    }
+}
+
+function añadirEmpleadoBBDD($empleado)
+{
+
+    global $cfg;
+    global $pdo;
+
+    if ($pdo != null) {
+
+        $consulta = "INSERT INTO $cfg[nombretabla] 
+                    (`name`, `address`, `salary`)
+                     VALUES (:name_, :address_, :salary_)";
+
+        $resultado = $pdo->prepare($consulta);
+        if (!$resultado) {
+            return false;
+        } elseif (!$resultado->execute([
+            ":name_" => $empleado["name"],
+            ":address_" => $empleado["address"],
+            ":salary_" => $empleado["salary"]
+        ])) {
+            return false;
+        } else {
+            //Insercion OK
+            return true;
+            $pdo = null;
+        }
+    } else {
+        //$pdo es null
+        return false;
+    }
+}

@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . "/../src/funciones.php");
 
 header("Access-Control-Allow-Origin: *");
 
@@ -26,26 +27,66 @@ if (isset($uri[2])) {
     $userId = (int) $uri[2];
 }
 
+
+
 switch ($requestMethod) {
     case 'GET':
         if ($userId != null) {
+            //-------------------------------
             //Endpoint    /empleados/X
-
+            //-------------------------------
             //Tendria que conectarme a la bbdd para obtener el emepleado con dicho id
-            $body = "Persona con id " . $userId;
-            header("HTTP/1.1 200 ok");
-            echo json_encode($body);
+            $pdo = conectaDb();
+            $empleado = obtenerEmpleadoBBDD($userId);
+
+            if ($empleado == null) {
+                header("HTTP/1.1 404 Not Found");
+                exit();
+            }
+            $respuesta = $empleado;
+            header("HTTP/1.1 200 OK");
+            echo json_encode($respuesta);
             exit();
-        }else{
-            //Tendriamos que conectarnos a la bbdd y devolver lista empleados
+        } else {
+            //-------------------------------
             //Endpoint    /empleados/
-
+            //-------------------------------
             //Pedir la lista de empleados a la bbdd
+            $pdo = conectaDb();
+            $listaEmpleados = obtenerEmpleadosBBDD();
 
-            $body = "Lista de empleados";
+            //Debug-----
+            //print_r($listaEmpleados);
+            //------------
+
+            if ($listaEmpleados == null) {
+                header("HTTP/1.1 500 Internat Server Error");
+                exit();
+            }
+
+            $respuesta = $listaEmpleados;
             header("HTTP/1.1 200");
-            echo json_encode($body);
+            echo json_encode($respuesta);
             exit();
+        }
+    
+    case 'POST':
+        //-------------------------------
+        //Endpoint POST /empleados/
+        //-------------------------------
+        $data = (array) json_decode(file_get_contents('php://input'), TRUE);
+
+        //Añadir datos a la bbdd
+        $pdo = conectaDb();
+        $insercionOK = añadirEmpleadoBBDD($data);
+        if ($insercionOK) {
+            $respuesta = ['mensaje' => "Empleado añadido."];
+            header("HTTP/1.1 201");
+            echo json_encode($respuesta);
+        } else {
+            $respuesta = ['mensaje' => 'Error al añadir persona.'];
+            header("HTTP/1.1 500");
+            echo json_encode($respuesta);
         }
 
     default:
@@ -57,3 +98,5 @@ switch ($requestMethod) {
 
 
 //file_put_contents("php://stdout", "\nMethod:$requestMethod");
+//file_put_contents("php://stdout", "\nLista:$lista");
+            //file_put_contents("php://stdout", "\nHOLA4");
