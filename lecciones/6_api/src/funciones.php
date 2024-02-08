@@ -100,3 +100,33 @@ function añadirEmpleadoBBDD($empleado)
         return false;
     }
 }
+
+function borrarEmpleadoBBDD($id)
+{
+
+    global $cfg;
+    global $pdo;
+
+    if ($pdo != null) {
+
+        $consulta = "DELETE FROM $cfg[nombretabla]
+                WHERE id = :indice";
+
+
+        $resultado = $pdo->prepare($consulta);
+        if (!$resultado) {
+            return false;
+        } elseif (!$resultado->execute([
+            ":indice" => $id
+        ])) {
+            return false;
+        } else {
+            //Borrado OK
+            return true;
+            $pdo = null;
+        }
+    } else {
+        //$pdo es null
+        return false;
+    }
+}

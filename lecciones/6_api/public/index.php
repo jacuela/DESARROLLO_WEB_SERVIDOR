@@ -69,7 +69,7 @@ switch ($requestMethod) {
             echo json_encode($respuesta);
             exit();
         }
-    
+
     case 'POST':
         //-------------------------------
         //Endpoint POST /empleados/
@@ -83,12 +83,39 @@ switch ($requestMethod) {
             $respuesta = ['mensaje' => "Empleado añadido."];
             header("HTTP/1.1 201");
             echo json_encode($respuesta);
+            exit();
         } else {
             $respuesta = ['mensaje' => 'Error al añadir persona.'];
             header("HTTP/1.1 500");
             echo json_encode($respuesta);
+            exit();
         }
+        break;
 
+    case 'DELETE':
+        //-------------------------------
+        //Endpoint DELETE /empleados/X
+        //-------------------------------
+        if ($userId == null) {
+            header("HTTP/1.1 404 Not Found");
+            exit();
+        } else {
+            $pdo = conectaDb();
+            $borrarOK = borrarEmpleadoBBDD($userId);
+
+            if ($borrarOK) {
+                $respuesta = ['mensaje' => "Empleado borrado."];
+                header("HTTP/1.1 200 OK");
+                echo json_encode($respuesta);
+                exit();
+            } else {
+                $respuesta = ['mensaje' => 'Error al borrar empleado.'];
+                header("HTTP/1.1 500");
+                echo json_encode($respuesta);
+                exit();
+            }
+        }
+        break;
     default:
         header("HTTP/1.1 404 Not Found");
         exit();
