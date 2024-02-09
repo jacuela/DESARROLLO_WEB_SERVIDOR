@@ -10,13 +10,17 @@ if (isset($_SESSION["errorApellidos"])) {
     $errorApellidos = $_SESSION["errorApellidos"];
 }
 
-if (isset($_SESSION["errorBBDD"])) {
-    $errorBBDD = $_SESSION["errorBBDD"];
+if (isset($_SESSION["mensajeAPI"])) {
+    $mensajeAPI = $_SESSION["mensajeAPI"];
 }
 
-if (isset($_SESSION["insertarOK"])) {
-    $insertarOK = $_SESSION["insertarOK"];
-}
+// if (isset($_SESSION["errorBBDD"])) {
+//     $errorBBDD = $_SESSION["errorBBDD"];
+// }
+
+// if (isset($_SESSION["insertarOK"])) {
+//     $insertarOK = $_SESSION["insertarOK"];
+// }
 
 
 ?>
@@ -39,7 +43,7 @@ if (isset($_SESSION["insertarOK"])) {
     ?>
 
     <main>
-        <form action='backend/bbdd-insertar.php' method='post'>
+        <form action='controlador/insertar.php' method='post'>
             <p>Escriba los datos del nuevo registro:</p>
 
             <table>
@@ -67,21 +71,23 @@ if (isset($_SESSION["insertarOK"])) {
             print "<p class='error'>$errorApellidos</p>";
         }
 
-        if (isset($errorBBDD)) {
-            print "<p class='error'>$errorBBDD</p>";
+        if (isset($mensajeAPI)) {
+            print("<p>$mensajeAPI</p>");
         }
 
-        if (isset($insertarOK) and $insertarOK == true) {
-            print "<p class='exito fade-in-out'>Persona creada correctamente</p>";
-        }
+        // if (isset($errorBBDD)) {
+        //     print "<p class='error'>$errorBBDD</p>";
+        // }
+
+        // if (isset($insertarOK) and $insertarOK == true) {
+        //     print "<p class='exito fade-in-out'>Persona creada correctamente</p>";
+        // }
 
         //En caso de recargar la pagina, no quiero mostrar otra vez los errores
         //Y quiero que aparezca el formulario limpio
         unset($_SESSION["errorNombre"]);
         unset($_SESSION["errorApellidos"]);
-        unset($_SESSION["errorBBDD"]);
-        unset($_SESSION["insertarOK"]);
-
+        unset($_SESSION["mensajeAPI"]);
         ?>
 
 

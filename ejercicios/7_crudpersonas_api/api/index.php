@@ -78,11 +78,20 @@ switch ($requestMethod) {
         //-------------------------------
         $data = (array) json_decode(file_get_contents('php://input'), TRUE);
 
+        // echo json_encode($data);
+        // exit;
+        //file_put_contents("php://stdout", "\nDEBUG");
+
+        //file_put_contents("php://stdout", "\nData[apellidos]:$data[apellidos]");
+
+
+
+
         //Añadir datos a la bbdd
         $pdo = conectaDb();
         $insercionOK = añadirPersonaBBDD($data);
 
-       
+
 
         if ($insercionOK) {
             $respuesta = ['mensaje' => "Persona añadido."];

@@ -4,7 +4,7 @@ require_once(__DIR__ . "/includes/funciones.php");
 
 
 //////// CON FILE_GET_CONTENTS
-//$listaPersonas = json_decode(file_get_contents("http://127.0.0.1:8000/personas"));
+$listaPersonas = json_decode(file_get_contents("http://127.0.0.1:8000/personas"));
 
 
 /////// CON CURL

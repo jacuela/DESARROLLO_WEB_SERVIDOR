@@ -75,12 +75,8 @@ function obtenerPersonaBBDD($id)
 
 function añadirPersonaBBDD($persona)
 {
-
     global $cfg;
     global $pdo;
-
-
-
 
     if ($pdo != null) {
 
