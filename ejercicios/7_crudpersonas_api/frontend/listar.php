@@ -4,29 +4,18 @@ require_once(__DIR__ . "/includes/funciones.php");
 
 
 //////// CON FILE_GET_CONTENTS
-$listaPersonas = json_decode(file_get_contents("http://127.0.0.1:8000/personas"));
+//$listaPersonas = json_decode(file_get_contents("http://127.0.0.1:8000/personas"));
 
 
 /////// CON CURL
-$curlHandle = curl_init();
-curl_setopt($curlHandle, CURLOPT_URL, "http://127.0.0.1:8000/personas");
-curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-$listaPersonas = json_decode(curl_exec($curlHandle));
-curl_close($curlHandle);
+$response = conectar_endpoint("GET", "http://127.0.0.1:8000/personas", null);
+$listaPersonas = [];
 
-
-// print("<pre>");
-// print_r($listaPersonas);
-// print("</pre>");
-
-// if (isset($_SESSION["listaPersonas"])) {
-//     $listaPersonas = $_SESSION["listaPersonas"];
-//     unset($_SESSION["listaPersonas"]);
-// } else {
-//     $_SESSION["listar"] = true;
-//     header("Location: " . APP_FOLDER . "/backend/bbdd-listar.php");
-//     exit();
-// }
+if ($response) {
+    $listaPersonas = json_decode($response);
+} else {
+    $mensaje = "ERROR:No se ha podido recuperar la los datos de la API";
+}
 
 ?>
 
@@ -69,9 +58,12 @@ curl_close($curlHandle);
             ?>
         </table>
 
-
-
-
+        <?php
+        if (isset($mensaje)){
+            print("<p class='error'>$mensaje</p>");
+        }
+        
+        ?>
 
 
     </main>

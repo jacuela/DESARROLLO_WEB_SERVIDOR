@@ -2,18 +2,36 @@
 session_start();
 require_once(__DIR__ . "/includes/funciones.php");
 
-if (isset($_SESSION["errorNombre"])) {
-    $errorNombre = $_SESSION["errorNombre"];
-}
 
-if (isset($_SESSION["errorApellidos"])) {
-    $errorApellidos = $_SESSION["errorApellidos"];
-}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-if (isset($_SESSION["mensajeAPI"])) {
-    $mensajeAPI = $_SESSION["mensajeAPI"];
-}
+    $nombre = recoge("nombre");
+    $apellidos = recoge("apellidos");
 
+    //Comprobaciones
+    if ($nombre == "") {
+        $errorNombre = "El nombre no puede estar vacio";
+    }
+    if ($apellidos == "") {
+        $errorApellidos = "El apellido no puede estar vacio";
+    }
+
+    if (!isset($errorApellidos) and !isset($errorNombre)) {
+        //Recogida de datos OK
+
+        $body_array = array('nombre' => $nombre, 'apellidos' => $apellidos);
+        $body = json_encode($body_array);
+
+        $response = conectar_endpoint("POST", "http://127.0.0.1:8000/personas", $body);
+
+        if ($response) {
+            $response = json_decode($response);
+            $mensajeAPI  = $response->mensaje;
+        } else {
+            $mensajeAPI  = "ERROR:No se ha podido insertar los datos";
+        }
+    }
+}
 
 ?>
 
@@ -35,7 +53,7 @@ if (isset($_SESSION["mensajeAPI"])) {
     ?>
 
     <main>
-        <form action='controlador/insertarControl.php' method='post'>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <p>Escriba los datos del nuevo registro:</p>
 
             <table>
@@ -69,9 +87,9 @@ if (isset($_SESSION["mensajeAPI"])) {
 
         //En caso de recargar la pagina, no quiero mostrar otra vez los errores
         //Y quiero que aparezca el formulario limpio
-        unset($_SESSION["errorNombre"]);
-        unset($_SESSION["errorApellidos"]);
-        unset($_SESSION["mensajeAPI"]);
+        unset($errorNombre);
+        unset($errorApellidos);
+        unset($mensajeAPI);
         ?>
 
     </main>

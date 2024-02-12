@@ -23,7 +23,8 @@ function cabecera($texto, $menu)
     if ($menu == MENU_PRINCIPAL) {
         print "        <li><a href='" . APP_FOLDER . "/index.php'>Inicio</a></li>\n";
         print "        <li><a href='" . APP_FOLDER . "/listar.php'>Listar</a></li>\n";
-        print "        <li><a href='" . APP_FOLDER . "/insertar-1.php'>Insertar</a></li>\n";
+        print "        <li><a href='" . APP_FOLDER . "/insertar-1.php'>Insertar-1</a></li>\n";
+        print "        <li><a href='" . APP_FOLDER . "/insertar-1_v2.php'>Insertar-1_v2</a></li>\n";
         print "        <li><a href='" . APP_FOLDER . "/modificar-1.php'>Modificar</a></li>\n";
         print "        <li><a href='" . APP_FOLDER . "/borrar-1.php'>Borrar</a></li>\n";
         print "        <li><a href='" . APP_FOLDER . "/borrar-todo-1.php'>Borrar todo</a></li>\n";
@@ -62,6 +63,47 @@ function recogeLista($var)
     }
     return null;
 }
+
+
+
+//######## FUNCION CONSUMIR_ENDPOINT
+//ENTRADA:
+//    $body: json con los datos a enviar
+//SALIDA: 
+//    $resultado: json con la respuesta
+function conectar_endpoint($tipo, $url, $body)
+{
+
+    $curlHandle = curl_init();
+    curl_setopt($curlHandle, CURLOPT_URL, $url);
+    curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+
+
+    //Header
+    $headers = array(
+        "Content-Type: application/json; charset=UTF-8"
+    );
+    curl_setopt($curlHandle, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curlHandle, CURLOPT_HEADER, false);
+
+
+    if ($tipo == "POST") {
+        curl_setopt($curlHandle, CURLOPT_POST, 1);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
+    }
+
+
+    $response = curl_exec($curlHandle);
+    curl_close($curlHandle);
+
+    return $response;
+}
+
+
+
+
+
+
 
 
 //Esta funcion me devuelve el PDO

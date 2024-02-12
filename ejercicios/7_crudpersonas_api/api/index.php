@@ -71,38 +71,48 @@ switch ($requestMethod) {
             echo json_encode($respuesta);
             exit();
         }
+        break;
 
     case 'POST':
-        //-------------------------------
-        //Endpoint POST /personas/
-        //-------------------------------
-        $data = (array) json_decode(file_get_contents('php://input'), TRUE);
+        if ($userId != null) {
+            //-------------------------------
+            //Endpoint POST /personas/X
+            //-------------------------------
 
-        // echo json_encode($data);
-        // exit;
-        //file_put_contents("php://stdout", "\nDEBUG");
-
-        //file_put_contents("php://stdout", "\nData[apellidos]:$data[apellidos]");
-
-
-
-
-        //Añadir datos a la bbdd
-        $pdo = conectaDb();
-        $insercionOK = añadirPersonaBBDD($data);
-
-
-
-        if ($insercionOK) {
-            $respuesta = ['mensaje' => "Persona añadido."];
-            header("HTTP/1.1 201");
-            echo json_encode($respuesta);
+            //######### SIN PROGRAMAR ############
+            header("HTTP/1.1 404 Not Found");
             exit();
         } else {
-            $respuesta = ['mensaje' => 'Error al añadir persona.'];
-            header("HTTP/1.1 500");
-            echo json_encode($respuesta);
-            exit();
+
+            //-------------------------------
+            //Endpoint POST /personas/
+            //-------------------------------
+            $data = (array) json_decode(file_get_contents('php://input'), TRUE);
+
+            // echo json_encode($data);
+            // exit;
+            //file_put_contents("php://stdout", "\nDEBUG");
+
+            //file_put_contents("php://stdout", "\nData[apellidos]:$data[apellidos]");
+
+
+            //Añadir datos a la bbdd
+            $pdo = conectaDb();
+            $insercionOK = añadirPersonaBBDD($data);
+
+
+
+            if ($insercionOK) {
+                $respuesta = ['mensaje' => "Persona añadido."];
+                header("HTTP/1.1 201");
+                echo json_encode($respuesta);
+                exit();
+            } else {
+                $respuesta = ['mensaje' => 'Error al añadir persona.'];
+                header("HTTP/1.1 500");
+                echo json_encode($respuesta);
+                exit();
+            }
         }
         break;
 
