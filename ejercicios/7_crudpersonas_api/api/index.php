@@ -116,6 +116,42 @@ switch ($requestMethod) {
         }
         break;
 
+    case 'PUT':
+        if ($userId != null) {
+            //-------------------------------
+            //Endpoint PUT /personas/X
+            //-------------------------------
+
+            $data = (array) json_decode(file_get_contents('php://input'), TRUE);
+
+            // echo json_encode($data);
+            // exit;
+            //file_put_contents("php://stdout", "\nDEBUG");
+
+            //file_put_contents("php://stdout", "\nData[apellidos]:$data[apellidos]");
+
+
+            //Añadir datos a la bbdd
+            $pdo = conectaDb();
+            $actualizarOK = actualizarPersonaBBDD($userId, $data);
+
+            if ($actualizarOK) {
+                $respuesta = ['mensaje' => "Persona actualizada."];
+                header("HTTP/1.1 201");
+                echo json_encode($respuesta);
+                exit();
+            } else {
+                $respuesta = ['mensaje' => 'Error al actualizar persona.'];
+                header("HTTP/1.1 500");
+                echo json_encode($respuesta);
+                exit();
+            }
+        } else {
+            header("HTTP/1.1 404 Not Found");
+            exit();
+        }
+        break;
+
     case 'DELETE':
         //-------------------------------
         //Endpoint DELETE /personas/X

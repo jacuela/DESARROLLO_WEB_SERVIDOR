@@ -5,5 +5,19 @@
         "email": "juan@kk.com",
         "password": "$2y$10$8b7mEAfTQXj3Ls5MESwZ4Oy1EV0aJ17XvfqW9KGcWGBS126TgrvCm",
         "imagen": "JuanAntonio-FotoCarnet.jpg"
+    },
+    {
+        "nombre": null,
+        "apellidos": null,
+        "email": "kk11@kk.com",
+        "password": "$2y$10$Hj8tmWMXw0Mg.m5NXNm9A.0R9N7GsqL3OJGSAyKVDL8i.JnuSrEM.",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": null,
+        "apellidos": null,
+        "email": "kk10@kk.com",
+        "password": "$2y$10$FnnM7Ymotv39BrpcqkFI8..AUMtoEcWpqDJ0D1xlSybJbRiFQnGTK",
+        "imagen": "default.png"
     }
 ]

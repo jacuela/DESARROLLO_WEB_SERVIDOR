@@ -133,3 +133,34 @@ function borrarPersonaBBDD($id)
         return false;
     }
 }
+
+function actualizarPersonaBBDD($id, $persona)
+{
+
+    global $cfg;
+    global $pdo;
+
+    if ($pdo != null) {
+
+        $consulta = "UPDATE $cfg[nombretabla]
+        SET nombre = :nombre, apellidos = :apellidos
+        WHERE id = :id";
+
+        $resultado = $pdo->prepare($consulta);
+        if (!$resultado) {
+            return false;
+        } elseif (!$resultado->execute([
+            ":id" => $id,
+            ":nombre" => $persona["nombre"],
+            ":apellidos" => $persona["apellidos"]
+        ])) {
+            return false;
+        } else {
+            return true;
+            $pdo = null;
+        }
+    } else {
+        //$pdo es null
+        return false;
+    }
+}

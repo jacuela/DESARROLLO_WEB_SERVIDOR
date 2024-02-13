@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($_SESSION["datosOK"] == true) {
 
-        print("<h2>DATOS OK</h2>");
+        //print("<h2>DATOS OK</h2>");
 
         //Recupero la lista de usuarios
         $lista_usuarios = [];
@@ -122,7 +122,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //session_destroy();
     }
 }
-
 
 header("Location: alta.php");
 

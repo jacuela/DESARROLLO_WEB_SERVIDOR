@@ -1,5 +1,7 @@
 <?php
+
 require_once(__DIR__ . "/src/funciones.php");
+
 
 header("Access-Control-Allow-Origin: *");
 
@@ -15,20 +17,20 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', $uri);
 
 //############ PARA COMPROBAR LA URI RECIBIDA
-//print_r($uri); //debug
+print_r($uri); //debug
 //###########################################
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-if ($uri[1] !== 'empleados') {
+if ($uri[4] !== 'empleados') {
     header("HTTP/1.1 404 Not Found");
     exit();
 }
 
 // Miramos a ver si hay userid en el endpoint
 $userId = null;
-if (isset($uri[2])) {
-    $userId = (int) $uri[2];
+if (isset($uri[5])) {
+    $userId = (int) $uri[5];
 }
 
 

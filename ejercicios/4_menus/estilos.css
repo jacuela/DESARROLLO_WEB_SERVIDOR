@@ -109,8 +109,6 @@ footer {
 
 
 /* Para el mensaje */
-
-
 .fade-in-out {
     opacity: 0;
     animation: fade-in 0.5s ease-in forwards, fade-out 4s 1s ease-out forwards;

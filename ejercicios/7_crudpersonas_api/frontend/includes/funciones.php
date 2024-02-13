@@ -73,11 +73,9 @@ function recogeLista($var)
 //    $resultado: json con la respuesta
 function conectar_endpoint($tipo, $url, $body)
 {
-
     $curlHandle = curl_init();
     curl_setopt($curlHandle, CURLOPT_URL, $url);
     curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-
 
     //Header
     $headers = array(
@@ -91,7 +89,6 @@ function conectar_endpoint($tipo, $url, $body)
         curl_setopt($curlHandle, CURLOPT_POST, 1);
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
     }
-
 
     $response = curl_exec($curlHandle);
     curl_close($curlHandle);
