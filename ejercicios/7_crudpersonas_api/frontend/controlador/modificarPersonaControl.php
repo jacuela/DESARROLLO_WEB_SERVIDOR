@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $_SESSION["modificarOK"] = false; //Parto del false. Si todo va bien, lo cambio a true
 
-    //Comprobaciones. No las hago por ahora
+    //Comprobaciones. 
     if ($nombre == "") {
         $_SESSION["errorNombre"] = "El nombre no puede estar vacio";
     }
@@ -27,31 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $body_array = array('nombre' => $nombre, 'apellidos' => $apellidos);
         $body = json_encode($body_array);
 
-        $response = conectar_endpoint("POST", "http://127.0.0.1:8000/personas/"."$id", $body);
+        $response = conectar_endpoint("PUT", "http://127.0.0.1:8000/personas/" . "$id", $body);
 
         if ($response) {
             $response = json_decode($response);
             $_SESSION["mensajeAPI"]  = $response->mensaje;
             $_SESSION["modificarOK"] = true;
-            
         } else {
             $_SESSION["mensajeAPI"]  = "ERROR:No se ha podido modificar la persona";
         }
 
-        // $pdo = conectaDb();
-        // $consulta = "UPDATE $cfg[nombretabla]
-        // SET nombre = :nombre, apellidos = :apellidos
-        // WHERE id = :id";
-
-        // $resultado = $pdo->prepare($consulta);
-        // if (!$resultado) {
-        //     $_SESSION["errorBBDD"] = "<p>Error al preparar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        // } elseif (!$resultado->execute([":nombre" => $nombre, ":apellidos" => $apellidos, ":id" => $id])) {
-        //     $_SESSION["errorBBDD"] = "<p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-        // } else {
-        //     $_SESSION["modificarOK"] = true;
-        //     $pdo = null;
-        // }
     }
 
     header("Location: ../modificar-2.php");

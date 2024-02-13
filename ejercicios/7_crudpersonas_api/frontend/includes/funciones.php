@@ -90,6 +90,14 @@ function conectar_endpoint($tipo, $url, $body)
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
     }
 
+    if ($tipo == "PUT") {
+        curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
+    }
+
+
+
+
     $response = curl_exec($curlHandle);
     curl_close($curlHandle);
 

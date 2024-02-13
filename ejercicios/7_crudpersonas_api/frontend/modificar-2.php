@@ -19,6 +19,10 @@ if (isset($_SESSION["mensajeAPI"])) {
     $mensajeAPI = $_SESSION["mensajeAPI"];
 }
 
+if (isset($_SESSION["modificarOK"])) {
+    $modificarOK = $_SESSION["modificarOK"];
+}
+
 
 if (isset($_SESSION["persona"])) {
     $registro = $_SESSION["persona"];
@@ -103,13 +107,12 @@ if (isset($_SESSION["persona"])) {
             print "<p class='error'>$errorApellidos</p>";
         }
 
-        if (isset($mensajeAPI)) {
+        if (isset($modificarOK) && $modificarOK == true) {
+            print "<p class='exito fade-in-out'>Persona actualizada correctamente</p>";
+        } else if (isset($mensajeAPI)) {
             print "<p>$mensajeAPI</p>";
         }
 
-        if (isset($modificarOK) && $modificarOK == true) {
-            print "<p class='exito fade-in-out'>Persona actualizada correctamente</p>";
-        }
 
         //En caso de recargar la pagina, no quiero mostrar otra vez los errores
         //Y quiero que aparezca el formulario limpio
