@@ -26,8 +26,8 @@ function cabecera($texto, $menu)
         print "        <li><a href='" . APP_FOLDER . "/insertar-1.php'>Insertar-1</a></li>\n";
         print "        <li><a href='" . APP_FOLDER . "/insertar-1_v2.php'>Insertar-1_v2</a></li>\n";
         print "        <li><a href='" . APP_FOLDER . "/modificar-1.php'>Modificar</a></li>\n";
-        print "        <li><a href='" . APP_FOLDER . "/borrar-1.php'>Borrar</a></li>\n";
-        print "        <li><a href='" . APP_FOLDER . "/borrar-todo-1.php'>Borrar todo</a></li>\n";
+        print "        <li><a href='" . APP_FOLDER . "/borrar.php'>Borrar</a></li>\n";
+        print "        <li><a href='" . APP_FOLDER . "/borrarTodoRegistros.php'>Borrar Todos Registros</a></li>\n";
     } elseif ($menu == MENU_VOLVER) {
         print "        <li><a href='" . APP_FOLDER . "/index.php'>Volver</a></li>\n";
     } else {
@@ -95,8 +95,9 @@ function conectar_endpoint($tipo, $url, $body)
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
     }
 
-
-
+    if ($tipo == "DELETE") {
+        curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "DELETE");
+    }
 
     $response = curl_exec($curlHandle);
     curl_close($curlHandle);

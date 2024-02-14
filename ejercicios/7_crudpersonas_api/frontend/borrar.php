@@ -3,16 +3,20 @@ session_start();
 require_once(__DIR__ . '/includes/funciones.php');
 
 
-
-
-if (isset($_SESSION["listaPersonas"])) {
-    $listaPersonas = $_SESSION["listaPersonas"];
-    unset($_SESSION["listaPersonas"]);
-} else {
-    $_SESSION["borrar"] = true;
-    header("Location: ./backend/bbdd-listar.php");
-    exit();
+if (isset($_SESSION["mensajeAPI"])) {
+    $mensajeAPI = $_SESSION["mensajeAPI"];
+    unset($_SESSION["mensajeAPI"]);
 }
+
+$response = conectar_endpoint("GET", "http://127.0.0.1:8000/personas", null);
+$listaPersonas = [];
+
+if ($response) {
+    $listaPersonas = json_decode($response);    
+} else {
+    $mensaje = "ERROR:No se ha podido recuperar la los datos de la API";
+}
+
 
 if (isset($_SESSION["errorNoMarcado"])) {
     $errorNoMarcado = $_SESSION["errorNoMarcado"];
@@ -21,7 +25,6 @@ if (isset($_SESSION["errorNoMarcado"])) {
 
 if (isset($_SESSION["borrarOK"])) {
     $borrarOK = $_SESSION["borrarOK"];
-
     unset($_SESSION["borrarOK"]);
 }
 
@@ -48,7 +51,7 @@ if (isset($_SESSION["borrarOK"])) {
 
     <main>
 
-        <form action='backend/bbdd-borrar.php' method='post'>
+        <form action='controlador/borrarControl.php' method='post'>
             <p>Marque los registros que quiera borrar:</p>
 
             <table class="conborde franjas">
@@ -63,9 +66,9 @@ if (isset($_SESSION["borrarOK"])) {
 
                 foreach ($listaPersonas as $persona) {
                     print " <tr>\n";
-                    print " <td class=\"centrado\"><input type=\"checkbox\" name=\"listaids[$persona[id]]\"></td>\n";
-                    print " <td>$persona[nombre]</td>\n";
-                    print " <td>$persona[apellidos]</td>\n";
+                    print " <td class=\"centrado\"><input type=\"checkbox\" name=\"listaids[$persona->id]\"></td>\n";
+                    print " <td>$persona->nombre</td>\n";
+                    print " <td>$persona->apellidos</td>\n";
                     print " </tr>\n";
                 }
                 ?>
@@ -83,7 +86,7 @@ if (isset($_SESSION["borrarOK"])) {
             print "<p class='error'>$errorNoMarcado</p>";
         }
         if (isset($borrarOK)) {
-            print "<p class='exito fade-in-out'>Personas borradas correctamente</p>";
+            print "<p class='exito fade-in-out'>$mensajeAPI</p>";
         }
         ?>
 
