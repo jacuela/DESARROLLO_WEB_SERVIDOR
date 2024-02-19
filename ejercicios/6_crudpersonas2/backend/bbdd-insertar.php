@@ -12,10 +12,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Comprobaciones
     if ($nombre == "") {
         $_SESSION["errorNombre"] = "El nombre no puede estar vacio";
+    } else {
+        //Voy a guardarme el dato, pot si vuelvo al formulario antes un error
+        //poder mostrarlo
+        $_SESSION["formulario"]["nombre"] = $nombre;
     }
     if ($apellidos == "") {
         $_SESSION["errorApellidos"] = "El apellido no puede estar vacio";
+    } else {
+        //Voy a guardarme el dato, pot si vuelvo al formulario antes un error
+        //poder mostrarlo
+        $_SESSION["formulario"]["apellidos"] = $apellidos;
     }
+    //Fin comprobaciones
 
     if (!isset($_SESSION["errorApellidos"]) and !isset($_SESSION["errorNombre"])) {
         //Recogida de datos OK
@@ -33,6 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 //Insercion OK
                 $_SESSION["insertarOK"] = true;
+                unset($_SESSION["formulario"]["nombre"]);
+                unset($_SESSION["formulario"]["apellidos"]);
                 $pdo = null;
             }
         } else {
@@ -40,6 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["errorBBDD"] = "PDO es null";
         }
     }
+
+
     header("Location: " . APP_FOLDER . "/insertar-1.php");
     exit();
 } else {
@@ -47,5 +60,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: " . APP_FOLDER . "/index.php");
     exit();
 }
-
-

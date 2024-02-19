@@ -45,11 +45,15 @@ if (isset($_SESSION["insertarOK"])) {
             <table>
                 <tr>
                     <td>Nombre:</td>
-                    <td><input type="text" name="nombre" size=50 autofocus></td>
+                    <td>
+                        <input type="text" name="nombre" size=50 value="<?php echo !empty($_SESSION['formulario']['nombre']) ? $_SESSION["formulario"]["nombre"] : ''; ?>" autofocus>
+                    </td>
                 </tr>
                 <tr>
                     <td>Apellidos:</td>
-                    <td><input type="text" name="apellidos" size=50></td>
+                    <td>
+                        <input type="text" name="apellidos" size=50 value="<?php echo !empty($_SESSION['formulario']['apellidos']) ? $_SESSION["formulario"]["apellidos"] : ''; ?>">
+                    </td>
                 </tr>
             </table>
 
@@ -81,6 +85,7 @@ if (isset($_SESSION["insertarOK"])) {
         unset($_SESSION["errorApellidos"]);
         unset($_SESSION["errorBBDD"]);
         unset($_SESSION["insertarOK"]);
+        unset($_SESSION["formulario"]);
 
         ?>
 
